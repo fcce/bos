@@ -31,7 +31,8 @@ describe Bos::Bucket do
   end
 
   it 'bucket list dir objects' do
-    result = @bucket.dir_objects 'files/'
+    Bos::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket, storage_class: "STANDARD_IA", path: 'tmp/'
+    result = @bucket.dir_objects 'tmp/'
     expect(result).to be_a(Array)
     expect(result.first).to be_a(Bos::Object)
   end
