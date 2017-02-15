@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'securerandom'
 describe Bos::Object do
   before do
     config_bos
@@ -37,10 +38,29 @@ describe Bos::Object do
     File.delete("tmp/downloadname.1")
   end
 
-  # it 'object can be destory' do
-  #   result = @bucket.objects
-  #   object = result.first
-  #   expect(object.destory).to eq(true)
-  # end
+  it 'can upload as a new file' do
+    ret = Bos::Object.upload file:"Gemfile.lock",filename:"Gemfile.lock",bucket:@bucket
+    expect(ret).to eq(true)
+  end
+
+  it 'can upload as a new file name' do
+    ret = Bos::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket
+    expect(ret).to eq(true)
+  end
+
+  it 'can upload to low frequency' do
+    ret = Bos::Object.upload file:"Gemfile",filename:"#{SecureRandom.hex(3)}.low.frequency",bucket:@bucket, storage_class: "STANDARD_IA"
+    expect(ret).to eq(true)
+  end
+
+  it 'can upload to a new dir' do
+    ret = Bos::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket, storage_class: "STANDARD_IA", path: 'tmp/'
+    expect(ret).to eq(true)
+  end
+
+  it 'object can be destory' do
+    objects = @bucket.objects
+    expect(objects.first.destory).to eq(true)
+  end
 
 end

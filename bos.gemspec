@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", ">= 9.0"
   spec.add_development_dependency "rspec", ">= 3.0"
   spec.add_development_dependency "typhoeus", "~> 1.1"
+  spec.add_development_dependency "pry"
 end

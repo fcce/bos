@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'bos'
-
+# Typhoeus::Config.verbose = true
 def config_bos
   Bos.configure do |config|
     config.scheme= 'http'
