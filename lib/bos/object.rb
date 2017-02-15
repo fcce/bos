@@ -48,6 +48,24 @@ module Bos
       response[:result]
     end
 
+    def self.upload options = {}
+      bucket = options[:bucket]
+      file = options[:file]
+      origin_file_name = File.basename(file)
+      filename = options[:filename] || origin_file_name
+      path = options[:path] || ''
+      storage_class = options[:storage_class] || "STANDARD"
+      headers = options[:headers] || {}
+
+      params = {
+        append: ""
+      }
+      headers.merge!({"x-bce-storage-class" => storage_class})
+      request = Bos::Request.new "#{bucket.bucket_host}/#{File.join(path,filename)}?append", method: :post, params:params, headers: headers, body: File.open(file,"r").read
+      response = request.run
+      response[:result]
+    end
+
     private
     def write_file(filename, data)
       file = File.new(filename, "wb")

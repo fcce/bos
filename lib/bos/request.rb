@@ -34,9 +34,6 @@ module Bos
       end
 
       request = Typhoeus::Request.new @uri.to_s, @options
-      request.on_headers do |response|
-        response.headers['content-type'] == 'text/plain'
-      end
       Bos::Authable.authorize_request request
     end
 

@@ -23,7 +23,7 @@ module Bos
         {
           "content-type" =>"text/plain",
           "x-bce-date" => get_canonical_time,
-          "content-length" => 0
+          "content-length" => (request.options[:body] || "").length
         }
           # todo PUT 方法计算的签名错误，content-length 的问题，暂时处理。
         # headers.merge!({"content-length" => 0}) if request.options[:method] == :put
