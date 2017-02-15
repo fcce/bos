@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bos', :git => 'git@github.com:fcce/bos.git'
+gem 'bos_client', :git => 'git@github.com:fcce/bos.git'
 ```
 
 And then execute:
@@ -15,8 +15,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install bos_client
-
-## Usage
 
 
 ## Development
