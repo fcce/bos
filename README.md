@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bos'
+gem 'bos', :git => 'git@github.com:fcce/bos.git'
 ```
 
 And then execute:
