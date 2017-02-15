@@ -37,10 +37,10 @@ describe Bos::Object do
     File.delete("tmp/downloadname.1")
   end
 
-  it 'object can be destory' do
-    result = @bucket.objects
-    object = result.first
-    expect(object.destory).to eq(true)
-  end
+  # it 'object can be destory' do
+  #   result = @bucket.objects
+  #   object = result.first
+  #   expect(object.destory).to eq(true)
+  # end
 
 end

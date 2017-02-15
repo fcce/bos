@@ -7,7 +7,7 @@ def config_bos
     config.url= 'bcebos.com'
     config.location= 'bj'
     config.expiration_in_seconds= 1800
-    config.access_key_id= '***'
-    config.secret_access_key= '***'
+    config.access_key_id= ENV["BOS_AK"]
+    config.secret_access_key= ENV["BOS_SK"]
   end
 end

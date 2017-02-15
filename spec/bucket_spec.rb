@@ -1,9 +1,11 @@
 require 'spec_helper'
+require 'securerandom'
 describe Bos::Bucket do
   before do
     config_bos
     @bucket = Bos::Bucket.new name:'hdfs'
     @unexist_bucket = Bos::Bucket.new name:'unexist'
+    @bucket_random_name = "gemtest#{SecureRandom.hex(3)}"
   end
 
   it 'should return a correct host' do
@@ -34,14 +36,10 @@ describe Bos::Bucket do
     expect(result.first).to be_a(Bos::Object)
   end
 
-  it 'can create a new bucket' do
-    new_bucket = Bos::Bucket.new name:'bosgemtest'
+  it 'can create a new bucket and can be destory' do
+    new_bucket = Bos::Bucket.new name: @bucket_random_name
     request = Bos::Request.new new_bucket.bucket_host, method: :put
     request.run
-  end
-
-  it 'can destory a bucket' do
-    new_bucket = Bos::Bucket.new name:'bosgemtest'
     expect(new_bucket.destory).to eq(true)
   end
 
