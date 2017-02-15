@@ -1,7 +1,7 @@
 # encoding: UTF-8
-module Bos
+module BosClient
   class Request
-    include Bos::Helper
+    include BosClient::Helper
     attr_accessor :uri, :options
 
     def initialize url , options={}
@@ -34,7 +34,7 @@ module Bos
       end
 
       request = Typhoeus::Request.new @uri.to_s, @options
-      Bos::Authable.authorize_request request
+      BosClient::Authable.authorize_request request
     end
 
     def resolve_response response
@@ -42,15 +42,15 @@ module Bos
         ret = resolve_bos_resault response
         return snake_hash_keys(ret)
       elsif response.timed_out?
-        raise Bos::Error::TimeOut.new "got a time out"
+        raise BosClient::Error::TimeOut.new "got a time out"
       elsif response.code == 0
-        raise Bos::Error::HttpError.new response.return_message
+        raise BosClient::Error::HttpError.new response.return_message
       else
         ret = resolve_bos_resault response
         if ret[:data][:code]
-          raise  Bos::Error.bos_error ret[:data][:code], ret[:data][:message]
+          raise  BosClient::Error.bos_error ret[:data][:code], ret[:data][:message]
         else
-          raise Bos::Error::HttpError.new "HTTP request failed: #{response.code.to_s}"
+          raise BosClient::Error::HttpError.new "HTTP request failed: #{response.code.to_s}"
         end
       end
     end
@@ -71,7 +71,7 @@ module Bos
           data: ret
         }
       rescue Exception => e
-        raise Bos::Error::JSONError.new e.message
+        raise BosClient::Error::JSONError.new e.message
       end
     end
 
@@ -86,7 +86,7 @@ module Bos
           data: ret
         }
       rescue Exception => e
-        raise Bos::Error::JSONError.new e.message
+        raise BosClient::Error::JSONError.new e.message
       end
     end
   end

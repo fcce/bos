@@ -1,5 +1,5 @@
 # encoding: UTF-8
-module Bos
+module BosClient
 
    DEFAULTS = {
       scheme: 'http',

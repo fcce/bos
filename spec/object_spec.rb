@@ -1,33 +1,33 @@
 require 'spec_helper'
 require 'securerandom'
-describe Bos::Object do
+describe BosClient::Object do
   before do
-    config_bos
-    @bucket = Bos::Bucket.new name:'hdfs'
+    config_bos_client
+    @bucket = BosClient::Bucket.new name:'hdfs'
   end
 
   it 'can upload as a new file' do
-    ret = Bos::Object.upload file:"Gemfile.lock",filename:"Gemfile.lock",bucket:@bucket
+    ret = BosClient::Object.upload file:"Gemfile.lock",filename:"Gemfile.lock",bucket:@bucket
     expect(ret).to eq(true)
   end
 
   it 'can upload as a new file name' do
-    ret = Bos::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket
+    ret = BosClient::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket
     expect(ret).to eq(true)
   end
 
   it 'can upload to low frequency' do
-    ret = Bos::Object.upload file:"Gemfile",filename:"#{SecureRandom.hex(3)}.low.frequency",bucket:@bucket, storage_class: "STANDARD_IA"
+    ret = BosClient::Object.upload file:"Gemfile",filename:"#{SecureRandom.hex(3)}.low.frequency",bucket:@bucket, storage_class: "STANDARD_IA"
     expect(ret).to eq(true)
   end
 
   it 'can upload to a new dir' do
-    ret = Bos::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket, storage_class: "STANDARD_IA", path: 'tmp/'
+    ret = BosClient::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket, storage_class: "STANDARD_IA", path: 'tmp/'
     expect(ret).to eq(true)
   end
 
   it 'object can be destory' do
-    Bos::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket
+    BosClient::Object.upload file:"Gemfile",filename:"Gemfile.#{SecureRandom.hex(3)}",bucket:@bucket
     objects = @bucket.objects
     expect(objects.first.destory).to eq(true)
   end

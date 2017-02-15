@@ -1,5 +1,5 @@
 # encoding: UTF-8
-module Bos
+module BosClient
   module Helper
 
    def snake_hash_keys value

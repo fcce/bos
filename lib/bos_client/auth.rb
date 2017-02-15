@@ -2,7 +2,7 @@
 require 'openssl'
 require 'typhoeus'
 require 'uri'
-module Bos
+module BosClient
   class Authable
 
     def self.authorize_request request
@@ -68,8 +68,8 @@ module Bos
 
       def sign request
         digest = OpenSSL::Digest.new('sha256')
-        sign_key_prefix = "bce-auth-v1/#{Bos.access_key_id}/#{get_canonical_time()}/#{Bos.expiration_in_seconds}"
-        sign_key = OpenSSL::HMAC.hexdigest digest, Bos.secret_access_key, sign_key_prefix
+        sign_key_prefix = "bce-auth-v1/#{BosClient.access_key_id}/#{get_canonical_time()}/#{BosClient.expiration_in_seconds}"
+        sign_key = OpenSSL::HMAC.hexdigest digest, BosClient.secret_access_key, sign_key_prefix
 
         http_method = get_http_method request
 

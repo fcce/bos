@@ -1,5 +1,5 @@
 # encoding: UTF-8
-module Bos
+module BosClient
   class << self
 
     def buckets
@@ -15,7 +15,7 @@ module Bos
     private
     def list_buckets
       url = host.to_s
-      request = Bos::Request.new url, method: :get
+      request = BosClient::Request.new url, method: :get
       response = request.run
       @result = response[:data]
     end

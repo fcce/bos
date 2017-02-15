@@ -1,5 +1,5 @@
 # encoding: UTF-8
-module Bos
+module BosClient
   class Object
     attr_accessor :bucket, :size, :path, :last_modified, :name, :storage_class
 
@@ -29,7 +29,7 @@ module Bos
       params = {}
       url = URI.encode("http://#{@bucket.bucket_host}/#{@file}")
       request = Typhoeus::Request.new(url, method: :get,headers:headers,params:params)
-      request = Bos::Authable.authorize_request(request)
+      request = BosClient::Authable.authorize_request(request)
 
       request.on_complete do |response|
         if path
@@ -43,7 +43,7 @@ module Bos
     end
 
     def destory
-      request = Bos::Request.new "#{@bucket.bucket_host}/#{@file}", method: :delete
+      request = BosClient::Request.new "#{@bucket.bucket_host}/#{@file}", method: :delete
       response = request.run
       response[:result]
     end
@@ -61,7 +61,7 @@ module Bos
         append: ""
       }
       headers.merge!({"x-bce-storage-class" => storage_class})
-      request = Bos::Request.new "#{bucket.bucket_host}/#{File.join(path,filename)}?append", method: :post, params:params, headers: headers, body: File.open(file,"r").read
+      request = BosClient::Request.new "#{bucket.bucket_host}/#{File.join(path,filename)}?append", method: :post, params:params, headers: headers, body: File.open(file,"r").read
       response = request.run
       response[:result]
     end
