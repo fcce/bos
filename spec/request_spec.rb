@@ -6,8 +6,9 @@ describe BosClient::Request do
   end
 
   it 'run method raise an error' do
-    request = BosClient::Request.new 'https://ruby-china.org/api/v3/test.json', method: :get
-    expect {request.run }.to raise_error(BosClient::Error)
+    request = BosClient::Request.new  'https://ruby-china.org/api/v3/test.json',
+                                      method: :get
+    expect { request.run }.to raise_error(BosClient::Error)
   end
 
   it 'run method result should be hash or raise error' do
@@ -15,5 +16,4 @@ describe BosClient::Request do
     ret = request.run
     expect(ret).to be_a(Hash).or(raise_error(BosClient::Error))
   end
-
 end
