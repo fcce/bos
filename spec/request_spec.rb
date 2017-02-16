@@ -6,8 +6,8 @@ describe BosClient::Request do
   end
 
   it 'run method raise an error' do
-    request = BosClient::Request.new  'https://ruby-china.org/api/v3/test.json',
-                                      method: :get
+    request = BosClient::Request.new 'https://ruby-china.org/api/v3/test.json',
+                                     method: :get
     expect { request.run }.to raise_error(BosClient::Error)
   end
 
