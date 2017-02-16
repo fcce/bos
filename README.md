@@ -1,4 +1,4 @@
-# BosClient [![Gem Version](https://badge.fury.io/rb/bos_client.svg)](https://badge.fury.io/rb/bos_client) ![](https://travis-ci.org/fcce/bos.svg?branch=master) [![Code Climate](https://codeclimate.com/github/fcce/bos/badges/gpa.svg)](https://codeclimate.com/github/fcce/bos)
+# BosClient [![Gem Version](https://badge.fury.io/rb/bos_client.svg)](https://badge.fury.io/rb/bos_client) ![](https://travis-ci.org/fcce/bos.svg?branch=master) [![Code Climate](https://codeclimate.com/github/fcce/bos/badges/gpa.svg)](https://codeclimate.com/github/fcce/bos) [![Test Coverage](https://codeclimate.com/github/fcce/bos/badges/coverage.svg)](https://codeclimate.com/github/fcce/bos/coverage)
 ## Installation
 
 Add this line to your application's Gemfile:
