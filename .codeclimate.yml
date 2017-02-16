@@ -1,0 +1,15 @@
+engines:
+  rubocop:
+    enabled: true
+    checks:
+      Rubocop/Lint/ParenthesesAsGroupedExpression:
+        enabled: false
+      Rubocop/Lint/Eval:
+        enabled: false
+    exclude_fingerprints:
+    - 551893af3f422cd134643094d40b3f47
+ratings:
+   paths:
+   - "bin/**/*"
+   - "lib/**/*"
+   - "spec/**/*"

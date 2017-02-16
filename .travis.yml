@@ -1,11 +1,16 @@
 language: ruby
 rvm:
-- 2.1.2
+  - 2.1.2
 before_script:
-- bundle install
+  - bundle install
 script:
-- bundle exec rspec
+  - bundle exec rspec
 notifications:
   slack:
     secure: RL3pJyyctMFuoTHleabKFXnyRXD6e4rjpj4Mx6juA5Gx+Fy1bj3gl+kmYPJlh81XNGjA3+t0FknswNe0E3eFCfHVyrQ0G+AkOFIwSJ1FNmjKnOi8YfFv6V+ACIft5oucGbe+k0MgZXj0/u+NVqrnePCxFI3rP3vBzr3Ou1n7J7r7SYGrePxpsYVCcmdpUN8TgHjKQRr5TcUPaBTPQcGHZ65hOiI7nsWM35452MTi7+NFql+dhflOCJuiajN96hojaVkzGWZi5bp9A7e4LipdjgmNvpwGkseiksIfZd2pq6Ho20DeEp7mEweyS7wmb4p675g5Aal22jTZkNbZBGFzr55+tqIYSp92iby9InKmPyniO8ivyokO2XdzJkJikzUjXlhfjWKbuKf9hGC6bLHzzeSs1ZS7Ekiyr9kXsnA0xIEPzpc2AjSgS+K6vhQeyon3tnFAEKO9MJIjvgKq/jgOSsV6wc/AkHpFK3nZrjVVBAtpkPZeuvG+q2Gmo2p3ip3i2uqWEFkpAktcWmIt/p9dzE1OR5G+Hf6CNd+t5wLd9T6BtAYT5P/tpaATQ5VrlhnqgJZbQI6umXp2nNQTTA7cgn1ENoQA6R5D+q5v9HE3EPY6cvTZJ+Rs5UjVljsb1pJTs92RbppwLJUm2kMvOpOqRng9qJS1OD/KNFqXBH2TS6o=
   email: false
+addons:
+    code_climate:
+        repo_token: 277c5e1702a1a4ca56c35583043025ea3f25acba3f8e321ebcacfbc524f82aa9
+after_success:
+  - bundle exec codeclimate-test-reporter
