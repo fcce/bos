@@ -1,11 +1,10 @@
-# BosClient
-
+# BosClient [![Gem Version](https://badge.fury.io/rb/bos_client.svg)](https://badge.fury.io/rb/bos_client) ![](https://travis-ci.org/fcce/bos.svg?branch=master)
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bos_client', :git => 'git@github.com:fcce/bos.git'
+gem 'bos_client'
 ```
 
 And then execute:
