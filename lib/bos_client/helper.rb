@@ -1,8 +1,7 @@
 # encoding: UTF-8
 module BosClient
   module Helper
-
-   def snake_hash_keys value
+    def snake_hash_keys(value)
       case value
       when Array
         value.map { |v| snake_hash_keys(v) }
@@ -29,10 +28,10 @@ module BosClient
 
     def underscore(string)
       string.gsub(/::/, '/')
-        .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-        .gsub(/([a-z\d])([A-Z])/, '\1_\2')
-        .tr('-', '_')
-        .downcase
+            .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+            .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+            .tr('-', '_')
+            .downcase
     end
   end
 end

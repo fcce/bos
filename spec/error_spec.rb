@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe BosClient::Error do
   it 'can set an undefine error constant' do
-    expect(BosClient::Error.const_defined? 'TestError').to eq(false)
+    expect(BosClient::Error.const_defined?('TestError')).to eq(false)
     BosClient::Error::TestError
-    expect(BosClient::Error.const_defined? 'TestError').to eq(true)
+    expect(BosClient::Error.const_defined?('TestError')).to eq(true)
   end
 
   it 'BosClient::Error::Testerror1 superclass should be BosClient::Error' do
@@ -12,7 +12,7 @@ describe BosClient::Error do
   end
 
   it 'an undefine error constant should accept a message' do
-    error = BosClient::Error::TestError2.new "error message"
-    expect(error.message).to eq("error message")
+    error = BosClient::Error::TestError2.new 'error message'
+    expect(error.message).to eq('error message')
   end
 end
