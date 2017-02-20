@@ -76,4 +76,12 @@ describe BosClient::Object do
     expect(File.exist?('tmp/downloadname.1')).to eq(true)
     File.delete('tmp/downloadname.1')
   end
+
+  it 'can fetch from a url' do
+    ret = BosClient::Object.fetch filename: "fetch#{SecureRandom.hex(3)}.html",
+                                  bucket: @bucket,
+                                  fetch_mode: 'sync',
+                                  fetch_source: 'https://cloud.baidu.com/product/bos.html'
+    expect(ret).to eq(true)
+  end
 end

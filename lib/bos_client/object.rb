@@ -75,6 +75,31 @@ module BosClient
       response[:result]
     end
 
+    def self.fetch(options = {})
+      bucket = options[:bucket]
+      filename = options[:filename]
+      path = options[:path] || ''
+      storage_class = options[:storage_class] || 'STANDARD'
+      fetch_mode = options[:fetch_mode] || 'sync'
+      fetch_source = options[:fetch_source]
+      headers = options[:headers] || {}
+
+      params = {
+        fetch: ''
+      }
+
+      headers['x-bce-storage-class'] = storage_class
+      headers['x-bce-fetch-mode'] = fetch_mode
+      headers['x-bce-fetch-source'] = fetch_source
+      url = "#{bucket.bucket_host}/#{File.join(path, filename)}?fetch"
+      request = BosClient::Request.new  url,
+                                        method: :post,
+                                        params: params,
+                                        headers: headers
+      response = request.run
+      response[:result]
+    end
+
     private
 
     def write_file(filename, data)
