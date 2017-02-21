@@ -3,6 +3,13 @@ require 'bos_client'
 # Typhoeus::Config.verbose = true
 require "simplecov"
 SimpleCov.start
+
+require 'knapsack'
+
+# CUSTOM_CONFIG_GOES_HERE
+
+Knapsack::Adapters::RSpecAdapter.bind
+
 def config_bos_client
   BosClient.configure do |config|
     config.scheme = 'http'
