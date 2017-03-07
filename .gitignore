@@ -10,3 +10,4 @@
 tmp/
 *.gem
 .DS_Store
+knapsack_rspec_report.json
