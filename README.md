@@ -1,5 +1,8 @@
 # BosClient
 [![Gem Version](https://badge.fury.io/rb/bos_client.svg)](https://badge.fury.io/rb/bos_client) [![Build Status](https://travis-ci.org/fcce/bos.svg?branch=master)](https://travis-ci.org/fcce/bos) [![Code Climate](https://codeclimate.com/github/fcce/bos/badges/gpa.svg)](https://codeclimate.com/github/fcce/bos) [![Test Coverage](https://codeclimate.com/github/fcce/bos/badges/coverage.svg)](https://codeclimate.com/github/fcce/bos/coverage)
+
+
+【Abandoned !!! 】Official ruby SDK is released here https://github.com/baidubce/bce-sdk-ruby 
 ## Installation
 
 Add this line to your application's Gemfile:
